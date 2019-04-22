@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 
-const a = [{name:'A', isEnable:true}, {name:'A', isEnable:true}]
+const a = [{name:'A', isEnable:true}, {name:'A', isEnable:true}];
+
 class CommentList extends Component {
     renderComments() {
         return a.map(comment => {
@@ -10,7 +11,7 @@ class CommentList extends Component {
     };
 
     changeColor(item){
-        console.log(item);
+        console.log(item.isEnable = !item.isEnable );
     }
     
 
