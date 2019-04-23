@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {reduxForm , Field} from 'redux-form';
 import {compose} from 'redux'
 import {connect} from 'react-redux';
-import * as actions from '../../action'
+import * as actions from '../../action';
 import './auth.css'
 
 class Signin extends Component {

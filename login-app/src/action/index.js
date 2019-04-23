@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {AUTH_USER, AUTH_ERROR} from './types';
+import {AUTH_USER, AUTH_ERROR, FETCH_DATA, LOAD_ERROR, ONE_ABILITY} from './types';
 
 
 
@@ -43,5 +43,46 @@ export const signin = (formProps, cb) => async dispatch =>  {
             type:AUTH_ERROR,
             payload:'Invalid Credentials'
         });
+    }
+};
+
+export const showList = () => async dispatch => {
+    const config = {
+        headers:{
+            "Authorization":localStorage.getItem("myToken")
+        }
+    }
+    try {
+        const response = await axios.get('http://localhost:8080',config);
+        dispatch({
+            type:FETCH_DATA,
+            payload:response.data
+        })
+
+    } catch(error){
+        dispatch({
+            type:LOAD_ERROR,
+            payload:error
+        })
+    }
+};
+
+export const getOneAbility = (id) => async dispatch => {
+    const config = {
+        headers:{
+            "Authorization":localStorage.getItem("myToken")
+        }
+    }
+    try {
+        const response = await axios.get(`http://localhost:8080/ability/${id}`,config);
+        dispatch({
+            type:ONE_ABILITY,
+            payload:response.data
+        })
+    } catch (error) {
+        dispatch({
+            type:LOAD_ERROR,
+            payload:error
+        })
     }
 }

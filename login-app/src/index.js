@@ -4,6 +4,7 @@ import {BrowserRouter, Route } from 'react-router-dom';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux'
 import reduxThunk  from 'redux-thunk'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import App from './components/App';
 import Welcome from './components/Welcome';
@@ -12,6 +13,7 @@ import reducers from './reducers';
 import Feature from './components/Feature';
 import Signout from './components/auth/Signout';
 import Signin from './components/auth/Signin';
+import Pokemon from './components/Pokemon';
 
 
 const store = createStore(reducers, {
@@ -28,6 +30,7 @@ ReactDOM.render(
                 <Route path="/feature" component={Feature} />
                 <Route path="/signout" component={Signout} />
                 <Route path="/signin" component={Signin} />
+                <Route exact path={`/pokemon/:id`} component={Pokemon} />
             </App>
         </BrowserRouter>
     </Provider>, document.getElementById('root')
